@@ -1,5 +1,4 @@
 import { Classroom } from './../../classroom/entities/classroom.entity';
-import { Role } from './../../role/entities/role.entity';
 import {
   Table,
   Model,
@@ -11,8 +10,8 @@ import {
   BelongsTo,
 } from 'sequelize-typescript';
   
-@Table({ tableName: 'sevima_user', timestamps: false })
-export class User extends Model {
+@Table({ tableName: 'sevima_task', timestamps: false })
+export class Task extends Model {
   @Column({
     primaryKey: true,
     autoIncrement: true
@@ -20,24 +19,28 @@ export class User extends Model {
   _id: number;
 
   @Column
-  username: string
-  
-  @Column
-  password: string
+  task_name: string
 
-  @ForeignKey(() => Role)
   @Column
-  role_code: string
+  task_description: string
 
-  @BelongsTo(() => Role)
-  role: Role
+  @Column({
+    type: DataType.DATE
+  })
+  task_start_date: Date
+
+  @Column({
+    type: DataType.DATE
+  })
+  task_end_date: Date
+
 
   @ForeignKey(() => Classroom)
   @Column
-  classroom_code: string
+  target_classroom_code: string
 
   @BelongsTo(() => Classroom)
-  classroom: Classroom
+  target_classroom: Classroom
 
   @Column({
     field: 'created_at',

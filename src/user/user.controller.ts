@@ -16,6 +16,11 @@ export class UserController {
     return this.userService.create(createUserDto);
   }
 
+  @Post('login')
+  login(@Body() requestBody: any) {
+    return this.userService.login(requestBody)
+  }
+
   @Get()
   findAll(@Query() allParams: any) {
     this.userService.rootService()
