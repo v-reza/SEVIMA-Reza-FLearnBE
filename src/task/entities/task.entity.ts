@@ -34,6 +34,11 @@ export class Task extends Model {
   })
   task_end_date: Date
 
+  @Column({
+    type: DataType.TEXT
+  })
+  user_answer_task: string
+
 
   @ForeignKey(() => Classroom)
   @Column

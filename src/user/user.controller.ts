@@ -18,6 +18,7 @@ export class UserController {
 
   @Post('login')
   login(@Body() requestBody: any) {
+    this.userService.rootService()
     return this.userService.login(requestBody)
   }
 
